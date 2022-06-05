@@ -2,9 +2,9 @@ package boardgame;
 
 
 /**
+ * Esta classe é responsavel pela posição do tabuleiro
  * 
  * @author Caique.Batista
- *
  */
 public class Position {
 	
