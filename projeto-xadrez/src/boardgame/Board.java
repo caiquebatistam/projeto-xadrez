@@ -14,7 +14,6 @@ public class Board {
 	
 	
 	
-	
 	public Board(int rows, int columns) {
 		this.rows = rows;
 		this.columns = columns;
@@ -23,14 +22,12 @@ public class Board {
 	}
 
 
-
-
 	public int getRows() {
 		return rows;
 	}
 
 
-	public void setRows(int rows) {
+	public void setRow(int rows) {
 		this.rows = rows;
 	}
 
@@ -44,6 +41,29 @@ public class Board {
 		this.columns = columns;
 	}
 	
+	
+	/**
+	 * Método responsavel por setar a peça na linha e coluna
+	 * 
+	 * @param row 
+	 * @param column
+	 * @return {pieces} retorna a peça com linha e coluna
+	 */
+	public Piece piece( int row, int column) {
+		return pieces[row][column];
+		
+	}
+	
+	/**
+	 * Retorna a peça pela posição
+	 * 
+	 * Sobrecarga do método Piece
+	 * @param position
+	 * @return
+	 */
+	public Piece piece(Position position) {
+		return pieces[position.getRow()][position.getColumn()];
+	}
 
 	
 	
