@@ -1,8 +1,9 @@
 package chess;
 
-import java.util.Iterator;
-
 import boardgame.Board;
+import boardgame.Position;
+import chess.pieces.King;
+import chess.pieces.Rook;
 
 /**
  * Esta classe representa a partida de xadrez
@@ -16,8 +17,15 @@ public class ChessMatch {
 	private Board board;
 	
 	
+	
+	/** 
+	 * Neste construtor acontece as seguintes ações
+	 * Quando for iniciada a partida, é criado um tabuleiro 8/8
+	 * e sera colocado as peças através do método initialSetup
+	 */
 	public ChessMatch() {
 		board = new Board(8, 8);
+		initialSetup();
 	}
 	
 	
@@ -35,6 +43,16 @@ public class ChessMatch {
 			}
 		}
 		return mat;	
+	}
+	
+	/**
+	 * Método responsavel por iniciar a partida de xadrez
+	 * colocando as peças no tabuleiro
+	 * @author Caique.Batista
+	 */
+	private void initialSetup() {
+		board.placePiece(new Rook(board, Color.WHITE), new Position(2,1));
+		board.placePiece(new King(board, Color.BLACK), new Position(0,4));
 	}
 	
 	
