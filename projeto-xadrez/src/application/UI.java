@@ -33,6 +33,17 @@ public class UI {
 	public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 	
+	/**
+	 * Método responsavel por limpar o console,
+	 * desta forma não fica poluida a cada jogada
+	 * 
+	 * @author Caique.Batista
+	 */
+	public static void clearScreen() {
+		System.out.print("\033[H\033[23");
+		System.out.flush();
+	}
+	
 	
 	/**
 	 * Método responsavel por ler a posição que o usuario digitar
