@@ -1,4 +1,5 @@
 package application;
+
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -44,7 +45,7 @@ public class UI {
 	 * @author Caique.Batista
 	 */
 	public static void clearScreen() {
-		System.out.print("\033[H\033[23");
+		System.out.print("\033[H\033[2J");
 		System.out.flush();
 	}
 	
@@ -72,14 +73,22 @@ public class UI {
 		}
 	}
 	
-	public static void printMatch (ChessMatch chessMatch, List<ChessPiece> captured ) {
+	public static void printMatch(ChessMatch chessMatch, List<ChessPiece> captured) {
 		printBoard(chessMatch.getPieces());
 		System.out.println();
 		printCapturedPieces(captured);
 		System.out.println();
 		System.out.println("Turn : " + chessMatch.getTurn());
-		System.out.println("Waiting player : " + chessMatch.getCurrentPlayer());
-		
+		if (!chessMatch.getCheckMate()) {
+			System.out.println("Waiting player: " + chessMatch.getCurrentPlayer());
+			if (chessMatch.getCheck()) {
+				System.out.println("CHECK!");
+			}
+		}
+		else {
+			System.out.println("CHECKMATE!");
+			System.out.println("Winner: " + chessMatch.getCurrentPlayer());
+		}
 	}
 	
 	

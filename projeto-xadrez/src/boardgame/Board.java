@@ -7,12 +7,10 @@ package boardgame;
  *
  */
 public class Board {
-	
+
 	private int rows;
 	private int columns;
 	private Piece[][] pieces;
-	
-	
 	
 	public Board(int rows, int columns) {
 		if (rows < 1 || columns < 1) {
@@ -23,21 +21,17 @@ public class Board {
 		this.rows = rows;
 		this.columns = columns;
 		pieces = new Piece[rows][columns];
-		
 	}
-
 
 	public int getRows() {
 		return rows;
 	}
 
-
-
 	public int getColumns() {
 		return columns;
 	}
-
-
+	
+	
 	/**
 	 * Método responsavel por setar a peça na linha e coluna
 	 * 
@@ -45,14 +39,13 @@ public class Board {
 	 * @param column
 	 * @return {pieces} retorna a peça com linha e coluna
 	 */
-	public Piece piece( int row, int column) {
-		if(!positionExists(row, column)) {
-			throw new BoardException("Posição não esta no tabuleiro");
+	public Piece piece(int row, int column) {
+		if (!positionExists(row, column)) {
+			throw new BoardException("Position not on the board");
 		}
-		
 		return pieces[row][column];
-		
 	}
+	
 	
 	/**
 	 * Retorna a peça pela posição
@@ -62,12 +55,12 @@ public class Board {
 	 * @return
 	 */
 	public Piece piece(Position position) {
-		if(!positionExists(position)) {
-			throw new BoardException("Posição não esta no tabuleiro");
+		if (!positionExists(position)) {
+			throw new BoardException("Position not on the board");
 		}
 		return pieces[position.getRow()][position.getColumn()];
 	}
-
+	
 	
 	/**
 	 * Este método é responsavel por colocar a peça na posição do tabuleiro
@@ -78,11 +71,12 @@ public class Board {
 	 */
 	public void placePiece(Piece piece, Position position) {
 		if (thereIsAPiece(position)) {
-			throw new BoardException("Já existe uma peça nessa posição meu paceeeru!!!");
+			throw new BoardException("There is already a piece on position " + position);
 		}
 		pieces[position.getRow()][position.getColumn()] = piece;
 		piece.position = position;
 	}
+	
 	
 	/**
 	 * Este método remove a peça do tabuleiro
@@ -97,10 +91,9 @@ public class Board {
 		}
 		Piece aux = piece(position);
 		aux.position = null;
-		pieces[position.getRow()][position.getColumn()]= null;
+		pieces[position.getRow()][position.getColumn()] = null;
 		return aux;
 	}
-	
 	
 	
 	/**
@@ -118,16 +111,16 @@ public class Board {
 		return positionExists(position.getRow(), position.getColumn());
 	}
 	
+	
 	/**
 	 * Método criado pra verificar se existe uma peça 
 	 * na posição escolhida.
 	 * @param position
 	 */
 	public boolean thereIsAPiece(Position position) {
-		if(!positionExists(position)) {
-			throw new BoardException("Posição não esta no tabuleiro");
+		if (!positionExists(position)) {
+			throw new BoardException("Position not on the board");
 		}
 		return piece(position) != null;
 	}
-
 }
